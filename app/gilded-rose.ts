@@ -3,7 +3,8 @@ import {Item} from './item'
 import { 
   updateQualityForConcertItem,
   updateQualityForAgedBrie,
-  updateQualityForSulfuras
+  updateQualityForSulfuras,
+  updateQualityForCommonItem,
  } from './update-strategies';
 
 export class GildedRose {
@@ -26,19 +27,7 @@ export class GildedRose {
           item = updateQualityForSulfuras(item)
           break;
         default:
-          if (!['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros'].includes(item.name)
-            && item.quality > 0 ) { // decrase quailty
-            item.quality = item.quality - 1
-          }
-
-          if (item.name != 'Sulfuras, Hand of Ragnaros' && item.name !='Backstage passes to a TAFKAL80ETC concert' ) { // decrease sellIn
-            item.sellIn = item.sellIn - 1;
-          }
-    
-          if (!['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros'].includes(item.name) // decrease quailty
-            && item.sellIn < 0  && item.quality > 0) {
-            item.quality = item.quality - 1
-          }
+         item = updateQualityForCommonItem(item)
       }
     });
 
