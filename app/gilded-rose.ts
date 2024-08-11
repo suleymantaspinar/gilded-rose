@@ -1,11 +1,11 @@
-import {Item} from './item'
+import { Item } from './item'
 
-import { 
+import {
   updateQualityForConcertItem,
   updateQualityForAgedBrie,
   updateQualityForSulfuras,
   updateQualityForCommonItem,
- } from './update-strategies';
+} from './update-strategies';
 
 export class GildedRose {
   items: Array<Item>;
@@ -14,20 +14,20 @@ export class GildedRose {
     this.items = items;
   }
 
-  updateQuality() :Item[] {
+  updateQuality(): Item[] {
     this.items.forEach(item => {
       switch (item.name) {
         case 'Backstage passes to a TAFKAL80ETC concert':
           item = updateQualityForConcertItem(item)
           break;
         case 'Aged Brie':
-            item = updateQualityForAgedBrie(item)
-            break;
+          item = updateQualityForAgedBrie(item)
+          break;
         case 'Sulfuras, Hand of Ragnaros':
           item = updateQualityForSulfuras(item)
           break;
         default:
-         item = updateQualityForCommonItem(item)
+          item = updateQualityForCommonItem(item)
       }
     });
 

@@ -1,5 +1,5 @@
 import { GildedRose } from '@/gilded-rose';
-import {Item} from '@/item'
+import { Item } from '@/item'
 
 describe('Gilded Rose', () => {
   it('should add a new item', () => {
