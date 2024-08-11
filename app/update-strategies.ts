@@ -34,3 +34,7 @@ export const updateQualityForAgedBrie = (item: Item) :Item => {
 
   return item
 }
+
+export const updateQualityForSulfuras = (item: Item) :Item => {
+  return item
+}

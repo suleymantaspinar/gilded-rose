@@ -1,6 +1,10 @@
 import {Item} from './item'
 
-import { updateQualityForConcertItem, updateQualityForAgedBrie } from './update-strategies';
+import { 
+  updateQualityForConcertItem,
+  updateQualityForAgedBrie,
+  updateQualityForSulfuras
+ } from './update-strategies';
 
 export class GildedRose {
   items: Array<Item>;
@@ -18,6 +22,9 @@ export class GildedRose {
         case 'Aged Brie':
             item = updateQualityForAgedBrie(item)
             break;
+        case 'Sulfuras, Hand of Ragnaros':
+          item = updateQualityForSulfuras(item)
+          break;
         default:
           if (!['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros'].includes(item.name)
             && item.quality > 0 ) { // decrase quailty
