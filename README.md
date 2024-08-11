@@ -2,6 +2,13 @@
 
 This is the Gilded Rose kata in TypeScript.
 
+# Refactoring Plan
+- Add test to clarify the feature of this application.
+- Make smaller changes
+- Make sure tests are working
+- Add new test cases if necessary
+- Repeat
+
 ## Getting started
 
 Install dependencies
