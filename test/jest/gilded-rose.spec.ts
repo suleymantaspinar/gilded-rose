@@ -106,3 +106,35 @@ describe('Backstage passes Rules', () => {
     expect(items[0].quality).toBe(0);
   });
 });
+
+describe('Conjured Item Rules', () => {
+
+  it('should decrease the quality of Conjured item by 2 when sellIn is positive', () => {
+    const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 5, 10)]);
+    const items = gildedRose.updateQuality();
+    console.log(items)
+    expect(items[0].sellIn).toBe(4);
+    expect(items[0].quality).toBe(8);
+  });
+
+  it('should decrease the quality of Conjured item by 4 when sellIn is non-positive', () => {
+    const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 0, 10)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].sellIn).toBe(-1);
+    expect(items[0].quality).toBe(6);
+  });
+
+  it('should not decrease the quality of Conjured item below 0', () => {
+    const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 5, 1)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].sellIn).toBe(4);
+    expect(items[0].quality).toBe(0);
+  });
+
+  it('should correctly update sellIn value for Conjured item', () => {
+    const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 10, 20)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].sellIn).toBe(9);
+  });
+
+});

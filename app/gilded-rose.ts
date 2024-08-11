@@ -5,6 +5,7 @@ import {
   updateQualityForAgedBrie,
   updateQualityForSulfuras,
   updateQualityForCommonItem,
+  updateQuailtyForConjuredItem,
 } from './update-strategies';
 
 export class GildedRose {
@@ -25,6 +26,9 @@ export class GildedRose {
           break;
         case 'Sulfuras, Hand of Ragnaros':
           item = updateQualityForSulfuras(item)
+          break;
+        case 'Conjured Mana Cake':
+          item = updateQuailtyForConjuredItem(item)
           break;
         default:
           item = updateQualityForCommonItem(item)

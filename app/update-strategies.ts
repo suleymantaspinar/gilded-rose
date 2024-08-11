@@ -52,3 +52,21 @@ export const updateQualityForCommonItem = (item: Item): Item => {
 
   return item
 }
+
+export const updateQuailtyForConjuredItem = (item: Item): Item => {
+  item.sellIn -= 1;
+
+  let degradationFactor = 2;
+
+  if (item.sellIn < 0) {
+    item.quality -= 2 * degradationFactor;
+  } else {
+    item.quality -= degradationFactor;
+  }
+
+  if (item.quality < 0) {
+    item.quality = 0;
+  }
+
+  return item
+}
