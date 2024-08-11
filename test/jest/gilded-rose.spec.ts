@@ -18,7 +18,6 @@ describe('Gilded Rose', () => {
   });
 });
 
-
 describe('Common Rules', () => {
   it('should not update the quality if it is 0', () => {
     const gildedRose = new GildedRose([new Item('foo', 10, 0)]);
@@ -33,7 +32,6 @@ describe('Common Rules', () => {
     expect(items[0].quality).toBe(8);
   });
 });
-
 
 describe('Aged Brie Rules', () => {
   it('should increase the quality when degrades', () => {
@@ -57,5 +55,19 @@ describe('Aged Brie Rules', () => {
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(6);
     expect(items[0].sellIn).toBe(-2);
+  });
+});
+
+describe('Sulfuras, Hand of Ragnaros Rules', () => {
+  it('should never degrades quality', () => {
+    const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 2, 80)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(80);
+  });
+
+  it('should never has to be sold', () => {
+    const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 2, 80)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].sellIn).toBe(2);
   });
 });
